@@ -9,7 +9,7 @@ d3.json(link_Url).then(function(data){
 
   // Feature - pop up for eathquake place and time 
 
-  function createFeatures(earthquakeData, TechnoplatesData){
+  function createFeatures(earthquakeData){
     
     function onEachFeature(feature, layer){
 
