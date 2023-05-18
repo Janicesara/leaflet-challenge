@@ -109,10 +109,4 @@ function createMap(earthquakesData) {
     legend.addTo(myMap);
       
     }
-    // maxZoom: 20,
-    // id: "outdoors-v11",
-    // accessToken: API_KEY
-
-    // maxZoom: 20,
-    //id: "light-v10",
-    //accessToken: API_KEY
+    
