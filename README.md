@@ -4,7 +4,7 @@
 The instructions for this activity are broken into two parts:
 
 Part 1: Create the Earthquake Visualization
-![image]((https://github.com/Janicesara/leaflet-challenge/assets/120125587/fff8ff55-7103-4e91-bda3-55ce6bd077c5)
+![image](Map images/B0845F47-9A80-49A8-B57B-56055618977A.jpeg)
 )
 
 Part 2: Gather and Plot More Data (Optional with no extra points earning)
