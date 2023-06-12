@@ -13,7 +13,7 @@ d3.json(link_Url).then(function(data){
     
     function onEachFeature(feature, layer){
 
-    layer.bindPopup(`<h3>Place: ${feature.properties.place}</h3><hr><p>Time: ${new Date(feature.properties.time)}</p><hr><p>Magnitude of Earthquake: ${feature.properties.mag}</p><hr><p> Felt Reports: ${feature.properties.felt}`);
+    layer.bindPopup(`<h3>Place: ${feature.properties.place}</h3><hr><p>Time: ${new Date(feature.properties.time)}</p><hr><p>Magnitude of Earthquake: ${feature.properties.mag}</p><hr><p> Depth: ${feature.geometry.coordinates[2]}`);
     }
 // A layer for feature array 
 
@@ -21,8 +21,8 @@ d3.json(link_Url).then(function(data){
         function createCircleMarker(feature, coordinates){
     var Markers = {
      radius:feature.properties.mag*5,
-     fillColor: colorpicking(feature.properties.mag),
-     color: colorpicking(feature.properties.mag),
+     fillColor: colorpicking(feature.geometry.coordinates[2]),
+     color: "#000",
      weight: 1,
      opacity: 0.8,
      fillOpacity: 0.40,
@@ -37,34 +37,26 @@ var  earthquakes = L.geoJSON(earthquakeData, {
 
 createMap(earthquakes);
 }
-function colorpicking(mag) {
-    if (mag <= 1) {
-        return "#ea2c2c"
-    } else if (mag <= 2) {
-        return "#eaa92c"
-    } else if (mag <= 3) {
-        return "#d5ea2c"
-    } else if (mag <= 4) {
-        return "#92ea2c"
-    } else if (mag <= 5) {
-        return "#2ceabf"
-    } else {
-        return "#2c99ea" ;
-    }
+function colorpicking(depth) {
+  return depth >= 90 ? "#92ea2c" :
+      depth < 90 && depth >= 70 ? "#2ceabf" :
+      depth < 70 && depth >= 50 ? "#FF8E15" :
+      depth < 50 && depth >= 30 ? "#d5ea2c" :
+      depth < 30 && depth >= 10 ? "#ea2c2c" :
+                                  "#2c99ea";
 }
-
 var legend = L.control({position: 'bottomright'});
 
 legend.onAdd = function() {
     var div = L.DomUtil.create('div', 'info legend');
-    var mag = [1.0, 2.5, 4.0, 5.5, 8.0];
+    var depth = [-10, 10, 30, 50, 70, 90];
     var labels = [];
-    var legendInfo = "<h4>Magnitude</h4>";
+    var legendInfo = "<h4>Depth</h4>";
 
     div.innerHTML = legendInfo
 
-    for (var i = 0; i < mag.length; i++) {
-          labels.push('<ul style="background-color:' + colorpicking(mag[i] + 1) + '"> <span>' + mag[i] + (mag[i + 1] ? '&ndash;' + mag[i + 1] + '' : '+') + '</span></ul>');
+    for (var i = 0; i < depth.length; i++) {
+          labels.push('<ul style="background-color:' + colorpicking(depth[i] + 1) + '"> <span>' + depth[i] + (depth[i + 1] ? '&ndash;' + depth[i + 1] + '' : '+') + '</span></ul>');
         }
 
       div.innerHTML += "<ul>" + labels.join("") + "</ul>";
