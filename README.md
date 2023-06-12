@@ -10,7 +10,7 @@ Part 1: Create the Earthquake Visualization
 
 
 
+![image](https://github.com/Janicesara/leaflet-challenge/blob/main/Map%20images/C2A3EB6C-7D76-4FCB-AF79-85C58CBBFE34_4_5005_c.jpeg)
 
 
 legend that will provide context for your map data.
-![image](https://github.com/Janicesara/leaflet-challenge/blob/main/Map%20images/C2A3EB6C-7D76-4FCB-AF79-85C58CBBFE34_4_5005_c.jpeg)
